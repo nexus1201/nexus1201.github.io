@@ -37,6 +37,7 @@
                     <a href="resume.pdf" class="btn btn-secondary" id="resumeBtn" download>Download Resume</a>
                 </div>
             </div>
+                
         </div>
     </section>
 
@@ -197,7 +198,8 @@
     <section id="certificates" class="section">
         <div class="container">
             <h2 class="section-title">Certificates</h2>
-            <div class="certificates-grid">
+            <div class="certificates-wrapper" data-collapsed-cards="5">
+                <div class="certificates-grid">
                 <a class="certificate-card" href="Certificates/CompTIA%20A%2B%20220-1002_%20Software%20Troubleshooting.pdf" target="_blank">
                     <i class="fas fa-certificate cert-icon"></i>
                     <h3>CompTIA A+ 220-1002 Software Troubleshooting</h3>
@@ -311,6 +313,10 @@
                     <h3>Service Desk, IT Asset, Service Configuration, and Change Control Management</h3>
                     <p class="issuer">Training</p>
                 </a>
+                </div>
+            </div>
+            <div class="certificates-controls">
+                <button class="btn show-more-btn" id="certToggle">Show more</button>
             </div>
         </div>
     </section>

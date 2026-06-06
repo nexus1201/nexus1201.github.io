@@ -225,4 +225,51 @@ function sendEmail(name, email, message) {
 window.addEventListener('load', () => {
     console.log('Portfolio loaded successfully!');
     // Add any initialization code here
+    initCertificatesCollapse();
 });
+
+// ===========================
+// Certificates Expand/Collapse
+// ===========================
+function initCertificatesCollapse() {
+    const wrapper = document.querySelector('.certificates-wrapper');
+    if (!wrapper) return;
+
+    const grid = wrapper.querySelector('.certificates-grid');
+    const cards = Array.from(grid.querySelectorAll('.certificate-card'));
+    const btn = document.getElementById('certToggle');
+    const threshold = parseInt(wrapper.dataset.collapsedCards || '8', 10);
+
+    if (!btn) return;
+    if (cards.length <= threshold) {
+        btn.style.display = 'none';
+        return;
+    }
+
+    // Hide cards beyond threshold
+    let collapsed = true;
+    function applyCollapsed(scrollIntoView = false) {
+        cards.forEach((card, idx) => {
+            if (idx >= threshold) card.classList.add('hidden-cert');
+            else card.classList.remove('hidden-cert');
+        });
+        btn.textContent = 'Show more';
+        collapsed = true;
+        if (scrollIntoView) {
+            wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    function applyExpanded() {
+        cards.forEach(card => card.classList.remove('hidden-cert'));
+        btn.textContent = 'Show less';
+        collapsed = false;
+    }
+
+    applyCollapsed();
+
+    btn.addEventListener('click', () => {
+        if (collapsed) applyExpanded();
+        else applyCollapsed(true);
+    });
+}

@@ -468,6 +468,38 @@ body {
     gap: 2rem;
 }
 
+/* Wrapper to limit visible certificate cards and allow expand/collapse */
+.certificates-wrapper {
+    overflow: hidden;
+    transition: max-height 0.45s ease;
+}
+
+.certificates-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.show-more-btn {
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid rgba(6, 182, 212, 0.25);
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    font-weight: 700;
+}
+
+.show-more-btn:hover {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Hidden certificate cards when collapsed */
+.certificate-card.hidden-cert {
+    display: none !important;
+}
+
 .certificate-card {
     background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(6, 182, 212, 0.05));
     border: 1px solid var(--border);
